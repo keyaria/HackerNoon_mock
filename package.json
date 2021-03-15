@@ -5,6 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "format": "prettier --write components/**/*.{ts,tsx} pages/**/*.{ts,tsx}",
     "type-check": "tsc"
   },
   "dependencies": {
@@ -22,6 +23,8 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "framer-motion": "^3.10.3",
+    "html-react-parser": "^1.2.4",
+    "moment": "^2.29.1",
     "next": "latest",
     "prettier": "^2.2.1",
     "react": "^17.0.1",

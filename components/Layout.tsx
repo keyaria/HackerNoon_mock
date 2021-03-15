@@ -2,12 +2,38 @@ import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import Header from './Header'
-import { Grid, GridItem } from '@chakra-ui/react'
+import styled from '@emotion/styled'
+import { Grid, GridItem, Flex } from '@chakra-ui/react'
 type Props = {
   children?: ReactNode
   title?: string
 }
-{/*<header>
+
+const GreenLink = styled.a`
+  padding: 2px 0px 1px;
+  cursor: pointer;
+  background-image: linear-gradient(
+    transparent 0%,
+    transparent calc(50% - 9px),
+    rgba(0, 255, 0, 0.35) calc(50% - 9px),
+    rgba(0, 255, 0, 0.35) 100%
+  );
+  background-size: 100% 200%;
+  background-position: 0px 0px;
+  word-break: break-word;
+  transition: all 120ms ease-in-out 0s;
+  &:hover {
+    background-size: 100%;
+    background-image: linear-gradient(
+      transparent 0%,
+      transparent calc(60% - 9px),
+      rgba(0, 255, 0, 0.35) calc(60% - 9px),
+      rgba(0, 255, 0, 0.35) 100%
+    );
+  }
+`
+{
+  /*<header>
   <nav>
     <Link href="/">
       <a>Home</a>
@@ -22,7 +48,8 @@ type Props = {
     </Link>{' '}
     | <a href="/api/users">Users API</a>
   </nav>
-</header>*/}
+</header>*/
+}
 const Layout = ({ children, title = 'This is the default title' }: Props) => (
   <div>
     <Head>
@@ -32,22 +59,77 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
     </Head>
     <Header />
     <Grid
-    templateRows="repeat(2, 1fr)"
-    templateColumns="repeat(5, 1fr)"
-    gap={4}
-    bg="blue"
-    maxWidth="1200px"
-    width="100%"
-    mt="7rem !important"
-    m="3.5rem auto"
+      templateColumns="repeat(5, 1fr)"
+      gap={4}
+      bg="blue"
+      maxWidth="1200px"
+      width="100%"
+      mt="7rem !important"
+      m="3.5rem auto"
     >
-    {children}
+      {children}
     </Grid>
     <GridItem colSpan={2} bg="papayawhip" />
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
+    <Flex bg="rgb(246, 247, 249)">
+      <ul style={{ listStyleType: `none` }}>
+        <li>
+          <GreenLink>Help</GreenLink>
+        </li>
+        <li>
+          <a>About</a>
+        </li>
+        <li>
+          <a>Start Writing</a>
+        </li>
+        <li>
+          <a>Sponser:</a>
+        </li>
+        <li>
+          <a>Brand as Author</a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+      </ul>
+    </Flex>
   </div>
 )
 
