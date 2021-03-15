@@ -31,6 +31,7 @@ import { useViewportScroll } from "framer-motion";
 
 export default function Header() {
   const bg = useColorModeValue("white", "gray.800");
+  const navbg = useColorModeValue("rgb(0, 255, 0)", "rgb(0, 187, 0)")
   const mobileNav = useDisclosure();
   const text = useColorModeValue("dark", "light");
   const ref = useRef();
@@ -42,13 +43,6 @@ useEffect(() => {
   return scrollY.onChange(() => setY(scrollY.get()));
 }, [scrollY]);
 
-const HandleScroll = () => {
-  if (y > 20) {
-    document.querySelector(".navbar").className = "navbar scroll";
-  } else {
-    document.querySelector(".navbar").className = "navbar";
-  }
-};
 const TabGroup = (props) => (
 
     <ButtonGroup defaultIndex={1} borderBottomColor="transparent" variant="ghost" {...props} m="auto">
@@ -157,7 +151,7 @@ const SecondNav = () => (
     {y < 150 ? (
       <div>
       <chakra.header
-        bg={bg}
+        bg={navbg}
         borderColor="gray.600"
         borderBottomWidth={1}
         w="full"
@@ -217,7 +211,7 @@ const SecondNav = () => (
 
               </Button>
             </HStack>
-            <Box display={{ base: "inline-flex", md: "none" }}>
+            <Box display={{ base: "inline-flex", md: "none" }} >
               <IconButton
                 display={{ base: "flex", md: "none" }}
                 aria-label="Open menu"
@@ -261,6 +255,8 @@ const SecondNav = () => (
         mx={2}
         borderWidth={0}
         overflowX="auto"
+        bg="rgb(0, 59, 0)"
+        w="100%"
       >
         <TabGroup display={{ base: "none", lg: "block" }}/>
       </Flex>
