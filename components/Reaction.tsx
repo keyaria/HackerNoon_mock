@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, ButtonGroup, Icon } from '@chakra-ui/react'
 import { AiOutlineHeart, AiOutlineBulb, AiOutlineMoneyCollect } from 'react-icons/ai'
-import { RiShipLine } from 'react-icons/Ri'
+import { RiShipLine } from 'react-icons/ri'
 
 
 export const Reactions = (props: any) => (
