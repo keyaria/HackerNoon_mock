@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   chakra,
   Box,
@@ -15,9 +15,7 @@ import {
   InputRightElement,
   Input,
   Icon,
-  Avatar,
   ButtonGroup,
-  Spacer,
   Image,
   Heading,
 } from '@chakra-ui/react'
@@ -28,28 +26,23 @@ import {
   AiOutlineMail,
   AiOutlineSearch,
   AiOutlineMenu,
-  AiFillHome,
 } from 'react-icons/ai'
-import { BsFillCameraVideoFill } from 'react-icons/bs'
 import { DarkModeSwitch } from './DarkModeSwitch'
 import { useViewportScroll } from 'framer-motion'
-import { GreenLink } from '../styles/common.ts'
+import { GreenLink } from '../styles/common'
 
-export default function Header({ title, handle }) {
+export default function Header({ title, handle }: any) {
   const bg = useColorModeValue('white', 'gray.800')
   const navbg = useColorModeValue('rgb(0, 255, 0)', 'rgb(0, 187, 0)')
   const mobileNav = useDisclosure()
-  const text = useColorModeValue('dark', 'light')
-  const ref = useRef()
   const [y, setY] = useState(0)
-  const { height = 0 } = ref.current ? ref.current.getBoundingClientRect() : {}
 
   const { scrollY } = useViewportScroll()
   useEffect(() => {
     return scrollY.onChange(() => setY(scrollY.get()))
   }, [scrollY])
 
-  const TabGroup = (props) => (
+  const TabGroup = (props: any) => (
     <ButtonGroup
       defaultIndex={1}
       borderBottomColor="transparent"
@@ -78,8 +71,8 @@ export default function Header({ title, handle }) {
     </ButtonGroup>
   )
 
-  const SecondNav = (props) => (
-    <chakra.header bg={bg} borderColor="gray.600" w="full" px={{ base: 2, sm: 3 }} py={2}>
+  const SecondNav = (props:any) => (
+    <chakra.header bg={bg} borderColor="gray.600" w="full" py={2}>
       <Flex alignItems="center" justifyContent="space-between" mx="auto" flexWarp="wrap">
         <HStack spacing={4} display="flex" alignItems="center" flexBasis="70%">
           <chakra.a href="/" title="Hacker Noon" display="flex" alignItems="center">
@@ -131,7 +124,7 @@ export default function Header({ title, handle }) {
     </chakra.header>
   )
   return (
-    <Box shadow="md" ref={ref} position="fixed" right="0" left="0" top="0">
+    <Box shadow="md"  position="fixed" right="0" left="0" top="0" zIndex="1000">
       {y < 150 ? (
         <div>
           <chakra.header
@@ -206,7 +199,6 @@ export default function Header({ title, handle }) {
                     rounded="sm"
                     shadow="sm"
                     height="100vh"
-                    bg="green"
                   >
                     <CloseButton
                       aria-label="Close menu"
@@ -222,7 +214,6 @@ export default function Header({ title, handle }) {
           <Flex
             alignItems="center"
             justifyContent="space-between"
-            mx={2}
             borderWidth={0}
             overflowX="auto"
             bg="rgb(0, 59, 0)"

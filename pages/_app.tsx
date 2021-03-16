@@ -2,12 +2,13 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 import theme from '../theme'
 import { AppProps } from 'next/app'
-//import {Fonts} from '../fonts'
+import { Fonts } from '../Fonts'
 
 //<Fonts />
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider resetCSS theme={theme}>
+      <Fonts />
       <Component {...pageProps} />
     </ChakraProvider>
   )

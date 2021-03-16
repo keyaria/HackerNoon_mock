@@ -1,17 +1,16 @@
 import React from 'react'
-import { Flex, ButtonGroup, Button, Icon } from '@chakra-ui/react'
+import { Flex, ButtonGroup, Icon } from '@chakra-ui/react'
 import { AiOutlineHeart, AiOutlineBulb, AiOutlineMoneyCollect } from 'react-icons/ai'
 import { RiShipLine } from 'react-icons/Ri'
 
-//Going to need to pass in props based on likes either map or foreach
 
-export const Reactions = (props) => (
+export const Reactions = (props: any) => (
   <Flex {...props} width="fit-content">
     <ButtonGroup>
-      <Icon as={AiOutlineHeart} fill="red" />
-      <Icon as={AiOutlineBulb} />
-      <Icon as={RiShipLine} />
-      <Icon as={AiOutlineMoneyCollect} />
+      <Icon as={AiOutlineHeart} _hover={{ fill: 'red', width: '8', height: '8' }} w={6} h={6} />
+      <Icon as={AiOutlineBulb} w={6} h={6} />
+      <Icon as={RiShipLine} w={6} h={6} />
+      <Icon as={AiOutlineMoneyCollect} w={6} h={6} />
     </ButtonGroup>
   </Flex>
 )

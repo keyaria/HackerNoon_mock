@@ -63,3 +63,40 @@ export const GreenLink = styled.a`
     );
   }
 `
+
+export const Bar = styled.div`
+  background: rgba(0, 0, 0, 0.1);
+  width: 10px;
+  height: 6px;
+  margin: 1px 0px;
+`
+
+export const Bars = styled.div`
+  height: 100%;
+  width: 10px;
+  margin-left: 30px;
+  display: flex;
+  margin-right: 10px;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+`
+export const BorderBox = styled.div`
+  margin: 0px auto;
+  background: rgb(33, 36, 40);
+  border-style: solid;
+  border-width: 16px;
+  border-image: url(https://hackernoon.com/Devimg/hn-ad-green.png) 16 / 1 / 8px stretch;
+  color: rgb(0, 255, 0);
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: 1fr;
+  -webkit-box-align: center;
+  align-items: center;
+`

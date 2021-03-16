@@ -1,8 +1,7 @@
 import { useColorMode, useColorModeValue, IconButton } from '@chakra-ui/react'
 import { FaMoon, FaSun } from 'react-icons/fa'
 export const DarkModeSwitch = () => {
-  const { colorMode, toggleColorMode } = useColorMode()
-  const isDark = colorMode === 'dark'
+  const { toggleColorMode } = useColorMode()
   const text = useColorModeValue('dark', 'light')
 
   const SwitchIcon = useColorModeValue(FaSun, FaMoon)

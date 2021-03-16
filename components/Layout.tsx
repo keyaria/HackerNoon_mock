@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react'
-import Link from 'next/link'
 import Head from 'next/head'
 import Header from './Header'
 import styled from '@emotion/styled'
 import { Grid, GridItem, Flex, List, ListItem } from '@chakra-ui/react'
 type Props = {
   children?: ReactNode
-  title?: string
+  title?: string,
+  handle?: string
 }
 
 const GreenLink = styled.a`
@@ -32,24 +32,7 @@ const GreenLink = styled.a`
     );
   }
 `
-{
-  /*<header>
-  <nav>
-    <Link href="/">
-      <a>Home</a>
-    </Link>{' '}
-    |{' '}
-    <Link href="/about">
-      <a>About</a>
-    </Link>{' '}
-    |{' '}
-    <Link href="/users">
-      <a>Users List</a>
-    </Link>{' '}
-    | <a href="/api/users">Users API</a>
-  </nav>
-</header>*/
-}
+
 const Layout = ({ children, title, handle }: Props) => (
   <div>
     <Head>
@@ -61,18 +44,17 @@ const Layout = ({ children, title, handle }: Props) => (
     <Grid
       templateColumns="repeat(5, 1fr)"
       gap={4}
-      bg="blue"
       maxWidth="1200px"
       width="100%"
-      mt="7rem !important"
+      mt="8rem !important"
       m="3.5rem auto"
     >
       {children}
     </Grid>
-    <GridItem colSpan={2} bg="papayawhip" />
+    <GridItem colSpan={2} />
     <Flex bg="rgb(246, 247, 249)">
       <List spacing={3} style={{ listStyleType: `none` }} display="flex" flexWarp="wrap">
-        <ListItem mr="20px">
+        <ListItem mr="20px" mt="0px">
           <GreenLink>Help</GreenLink>
         </ListItem>
         <ListItem mr="20px">
@@ -87,48 +69,8 @@ const Layout = ({ children, title, handle }: Props) => (
         <ListItem mr="20px">
           <GreenLink>Brand as Author</GreenLink>
         </ListItem>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
       </List>
-      <List>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-      </List>
+
     </Flex>
   </div>
 )
