@@ -16,7 +16,7 @@ import Layout from '../components/Layout'
 import { Reactions } from '../components/Reaction'
 import { GridItem, Heading, Button } from '@chakra-ui/react'
 import moment from 'moment'
-import data from './api/index.json'
+import data from '../api/index.json'
 import parse, { domToReact } from 'html-react-parser'
 import { SquareAvatar, SectionDivider, CallToAction, GreenLink, Bar, Bars, BorderBox } from '../styles/common'
 import {
@@ -27,7 +27,7 @@ import {
   AiOutlineMail
 } from 'react-icons/ai'
 
-import { RiBookmarkLine } from 'react-icons/Ri'
+import { RiBookmarkLine } from 'react-icons/ri'
 
 const IndexPage = () => {
   const [isShown, setIsShown] = useState(false)
