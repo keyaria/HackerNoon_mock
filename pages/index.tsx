@@ -127,7 +127,7 @@ const IndexPage = () => {
       <GridItem colSpan={5}>
         <Reactions margin="auto" />
       </GridItem>
-      <GridItem colStart={2} colEnd={-2} border="green 2px solid">
+      <GridItem colStart={2} colEnd={-2}>
         <Flex justifyContent="flex-end" mb="20px">
           Share This Story
           <Icon

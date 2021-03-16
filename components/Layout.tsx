@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import Head from 'next/head'
 import Header from './Header'
 import styled from '@emotion/styled'
+import { GreenLink } from '../styles/common'
 import { Grid, GridItem, Flex, List, ListItem } from '@chakra-ui/react'
 type Props = {
   children?: ReactNode
@@ -9,29 +10,6 @@ type Props = {
   handle?: string
 }
 
-const GreenLink = styled.a`
-  padding: 2px 0px 1px;
-  cursor: pointer;
-  background-image: linear-gradient(
-    transparent 0%,
-    transparent calc(50% - 9px),
-    rgba(0, 255, 0, 0.35) calc(50% - 9px),
-    rgba(0, 255, 0, 0.35) 100%
-  );
-  background-size: 100% 200%;
-  background-position: 0px 0px;
-  word-break: break-word;
-  transition: all 120ms ease-in-out 0s;
-  &:hover {
-    background-size: 100%;
-    background-image: linear-gradient(
-      transparent 0%,
-      transparent calc(60% - 9px),
-      rgba(0, 255, 0, 0.35) calc(60% - 9px),
-      rgba(0, 255, 0, 0.35) 100%
-    );
-  }
-`
 
 const Layout = ({ children, title, handle }: Props) => (
   <div>
@@ -54,19 +32,19 @@ const Layout = ({ children, title, handle }: Props) => (
     <GridItem colSpan={2} />
     <Flex bg="rgb(246, 247, 249)">
       <List spacing={3} style={{ listStyleType: `none` }} display="flex" flexWarp="wrap">
-        <ListItem mr="20px" mt="0px">
+        <ListItem mr="20px" >
           <GreenLink>Help</GreenLink>
         </ListItem>
-        <ListItem mr="20px">
+        <ListItem mr="20px"  mt="0px !important">
           <GreenLink>About</GreenLink>
         </ListItem>
-        <ListItem mr="20px">
+        <ListItem mr="20px"  mt="0px !important">
           <GreenLink>Start Writing</GreenLink>
         </ListItem>
-        <ListItem mr="20px">
+        <ListItem mr="20px" mt="0px !important">
           <GreenLink>Sponser:</GreenLink>
         </ListItem>
-        <ListItem mr="20px">
+        <ListItem mr="20px"  mt="0px !important">
           <GreenLink>Brand as Author</GreenLink>
         </ListItem>
       </List>
