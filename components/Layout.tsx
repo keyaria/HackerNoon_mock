@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 import Head from 'next/head'
 import Header from './Header'
-import styled from '@emotion/styled'
 import { GreenLink } from '../styles/common'
 import { Grid, GridItem, Flex, List, ListItem } from '@chakra-ui/react'
 type Props = {
