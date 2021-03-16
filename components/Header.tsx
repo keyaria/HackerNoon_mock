@@ -12,24 +12,30 @@ import {
   IconButton,
   CloseButton,
   InputGroup,
-  InputLeftElement,
+  InputRightElement,
   Input,
+  Icon,
   Avatar,
   ButtonGroup,
   Spacer,
+  Image,
+  Heading,
 } from '@chakra-ui/react'
 import {
+  AiOutlineTwitter,
+  AiOutlineFacebook,
+  AiOutlineLinkedin,
+  AiOutlineMail,
+  AiOutlineSearch,
   AiOutlineMenu,
   AiFillHome,
-  AiOutlineInbox,
-  AiOutlineSearch,
-  AiFillBell,
 } from 'react-icons/ai'
 import { BsFillCameraVideoFill } from 'react-icons/bs'
 import { DarkModeSwitch } from './DarkModeSwitch'
 import { useViewportScroll } from 'framer-motion'
+import { GreenLink } from '../styles/common.ts'
 
-export default function Header() {
+export default function Header({ title, handle }) {
   const bg = useColorModeValue('white', 'gray.800')
   const navbg = useColorModeValue('rgb(0, 255, 0)', 'rgb(0, 187, 0)')
   const mobileNav = useDisclosure()
@@ -72,49 +78,53 @@ export default function Header() {
     </ButtonGroup>
   )
 
-  const SecondNav = () => (
-    <chakra.header
-      bg={bg}
-      borderColor="gray.600"
-      borderBottomWidth={1}
-      w="full"
-      px={{ base: 2, sm: 3 }}
-      py={2}
-    >
+  const SecondNav = (props) => (
+    <chakra.header bg={bg} borderColor="gray.600" w="full" px={{ base: 2, sm: 3 }} py={2}>
       <Flex alignItems="center" justifyContent="space-between" mx="auto" flexWarp="wrap">
-        <HStack spacing={4} display="flex" alignItems="center" flexBasis="60%">
-          <chakra.a href="/" title="Choc Home Page" display="flex" alignItems="center">
-            <p>Logo</p>
+        <HStack spacing={4} display="flex" alignItems="center" flexBasis="70%">
+          <chakra.a href="/" title="Hacker Noon" display="flex" alignItems="center">
+            <img src="/hn-icon.png" height="24px" width="24px" />
             <VisuallyHidden>Hacker Noon</VisuallyHidden>
           </chakra.a>
-          <Button variant="solid" href="#" size="sm" display={{ base: 'none', md: 'inline-flex' }}>
-            Title
-          </Button>
+          <Heading size="md">
+            {' '}
+            {props.title} by <GreenLink> @{props.handle}</GreenLink>{' '}
+          </Heading>
         </HStack>
         <HStack spacing={3} display="flex" alignItems="center">
           <HStack spacing={3}>
-            <Button
-              variant="ghost"
-              href="#"
-              size="sm"
+            <Icon
+              as={AiOutlineTwitter}
+              color="green.500"
+              w={6}
+              h={6}
+              mr="6px"
               display={{ base: 'none', md: 'inline-flex' }}
-            >
-              Twitter
-            </Button>
-            <Button
-              variant="solid"
-              href="#"
-              size="sm"
+            />
+            <Icon
+              as={AiOutlineFacebook}
+              color="green.500"
+              w={6}
+              h={6}
+              mr="6px"
               display={{ base: 'none', md: 'inline-flex' }}
-            >
-              FaceBook
-            </Button>
-            <Button variant="ghost" href="#" leftIcon={<AiFillHome />} size="sm">
-              Linkendn
-            </Button>
-            <Button variant="ghost" href="#" leftIcon={<AiFillHome />} size="sm">
-              Email
-            </Button>
+            />
+            <Icon
+              as={AiOutlineLinkedin}
+              color="green.500"
+              w={6}
+              h={6}
+              mr="6px"
+              display={{ base: 'none', md: 'inline-flex' }}
+            />
+            <Icon
+              as={AiOutlineMail}
+              color="green.500"
+              w={6}
+              h={6}
+              mr="6px"
+              display={{ base: 'none', md: 'inline-flex' }}
+            />
           </HStack>
         </HStack>
       </Flex>
@@ -122,8 +132,6 @@ export default function Header() {
   )
   return (
     <Box shadow="md" ref={ref} position="fixed" right="0" left="0" top="0">
-      {console.log(scrollY, y, height)}
-
       {y < 150 ? (
         <div>
           <chakra.header
@@ -137,38 +145,42 @@ export default function Header() {
           >
             <Flex alignItems="center" justifyContent="space-between" mx="auto">
               <HStack spacing={4} display="flex" alignItems="center">
-                <chakra.a href="/" title="Choc Home Page" display="flex" alignItems="center">
-                  <p>Logo</p>
+                <chakra.a href="/" title="Hacker Noon" display="flex" alignItems="center">
+                  <Image src="/hn-logo.png" h="40px" w="248px" />
                   <VisuallyHidden>Hacker Noon</VisuallyHidden>
                 </chakra.a>
               </HStack>
               <HStack spacing={3} display="flex" alignItems="center">
                 <HStack spacing={3}>
-                  <InputGroup display={{ base: 'block', lg: 'block' }} ml="auto">
-                    <InputLeftElement pointerEvents="none" children={<AiOutlineSearch />} />
-                    <Input type="tel" placeholder="Search..." />
+                  <InputGroup display={{ base: 'block', lg: 'block' }} ml="auto" color="green.300">
+                    <Input
+                      type="tel"
+                      placeholder="Search..."
+                      background="black"
+                      color="green.300"
+                    />
+                    <InputRightElement pointerEvents="none" children={<AiOutlineSearch />} />
                   </InputGroup>
+                  <Button
+                    variant="outline"
+                    colorScheme="black"
+                    href="#"
+                    size="md"
+                    display={{ base: 'none', md: 'inline-flex' }}
+                    mx="1rem"
+                    w="200px !important"
+                  >
+                    Start Writing
+                  </Button>
                   <Button
                     variant="ghost"
                     href="#"
                     size="sm"
                     display={{ base: 'none', md: 'inline-flex' }}
                   >
-                    Start Writing
-                  </Button>
-                  <Button
-                    variant="solid"
-                    href="#"
-                    size="sm"
-                    display={{ base: 'none', md: 'inline-flex' }}
-                  >
                     Log in
                   </Button>
-                  <Button variant="ghost" href="#" leftIcon={<AiFillHome />} size="sm">
-                    <DarkModeSwitch />
-
-                    <VisuallyHidden>Switch Color Mode</VisuallyHidden>
-                  </Button>
+                  <DarkModeSwitch />
                 </HStack>
                 <Box display={{ base: 'inline-flex', md: 'none' }}>
                   <IconButton
@@ -216,11 +228,11 @@ export default function Header() {
             bg="rgb(0, 59, 0)"
             w="100%"
           >
-            <TabGroup display={{ base: 'none', lg: 'block' }} />
+            <TabGroup display={{ base: 'none', lg: 'block' }} color="white" />
           </Flex>
         </div>
       ) : (
-        <SecondNav />
+        <SecondNav title={title} handle={handle} />
       )}
     </Box>
   )

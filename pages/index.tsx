@@ -1,12 +1,27 @@
 import Link from 'next/link'
-import { Flex, Box, Spacer, Image, Text, Avatar, Link as ChakraLink } from '@chakra-ui/react'
+import {
+  Flex,
+  Icon,
+  Box,
+  Spacer,
+  Wrap,
+  Image,
+  Text,
+  Avatar,
+  VStack,
+  SimpleGrid,
+  Grid,
+  Link as ChakraLink,
+} from '@chakra-ui/react'
 import Layout from '../components/Layout'
 import { Reactions } from '../components/Reaction'
 import { GridItem, Heading, Button } from '@chakra-ui/react'
 import moment from 'moment'
 import data from './api/index.json'
 import parse, { domToReact } from 'html-react-parser'
-
+import styled from '@emotion/styled'
+import { SquareAvatar, SectionDivider, CallToAction, GreenLink } from '../styles/common.ts'
+import { AiOutlineTwitter, AiFillGithub } from 'react-icons/ai'
 console.log(data)
 console.log(moment(data.publishedAt).format('MMMM Do YYYY'))
 
@@ -19,11 +34,11 @@ const options = {
     if (attribs.class === 'paragraph') {
       return (
         <>
-          <GridItem colStart={2} colEnd={-2}>
+          <GridItem colStart={2} colEnd={-2} onHover>
             {domToReact(children)}
           </GridItem>
-          <GridItem colStart={5} colEnd="auto">
-            <Reactions />
+          <GridItem colStart={5} colEnd="auto" onHover>
+            <Reactions display="none" />
           </GridItem>
         </>
       )
@@ -49,10 +64,11 @@ const options = {
 }
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
+  <Layout title={data.title} handle={data.profile.handle}>
     <GridItem colSpan={5}>
+      {console.log(data)}
       <Box bgColor="red">
-        <Heading> {data.title}</Heading>
+        <Heading textAlign="center"> {data.title}</Heading>
       </Box>
     </GridItem>
     <GridItem colSpan={5} bg="pink">
@@ -68,12 +84,22 @@ const IndexPage = () => (
     <GridItem colSpan={5}>
       <Image src={data.mainImage} />
     </GridItem>
-    <GridItem colSpan={1} bg="papayawhip">
-      <Avatar src={data.profile.avatar} />
-      <ChakraLink href="/"> @{data.profile.handle} </ChakraLink>
-      <Heading as="h6"> {data.profile.displayName} </Heading>
-      <Text> {data.profile.bio} </Text>
-      <Box>Twitter github</Box>
+    <GridItem colSpan={1} bg="papayawhip" pr="10px">
+      <SquareAvatar src={data.profile.avatar} />
+      <Box>
+        <Box display="inline-flex" flexDirection="column">
+          <GreenLink href="/" display="block">
+            {' '}
+            @{data.profile.handle}{' '}
+          </GreenLink>
+          <small display="block"> {data.profile.displayName} </small>
+        </Box>
+        <Text> {data.profile.bio} </Text>
+        <Box>
+          <Icon as={AiOutlineTwitter} color="green.500" w={6} h={6} mr="6px" />
+          <Icon as={AiFillGithub} color="green.500" w={6} h={6} />
+        </Box>
+      </Box>
     </GridItem>
     {parse(data.markup, options)}
     <GridItem colSpan={5} bg="green">
@@ -84,21 +110,62 @@ const IndexPage = () => (
     </GridItem>
 
     <GridItem colSpan={5} bg="green">
-      <Heading> Related </Heading>
-      {data.relatedStories.map((story) => (
-        <Box> {story.text} </Box>
-      ))}
-    </GridItem>
-    <GridItem colSpan={5} bg="green">
-      <Heading> Tags </Heading>
+      <SectionDivider> Related </SectionDivider>
+      <SimpleGrid columns={3} spacing="30px" minChildWidth="300px">
+        {data.relatedStories.map((story) => (
+          <VStack border="2px solid rgb(246, 247, 249)" borderRadius="2px">
+            {story.title && (
+              <>
+                <Heading as="h3" fontSize="1.2rem" p="10px">
+                  {' '}
+                  {story.title}
+                </Heading>
 
-      {data.tags.map((tag) => (
-        <Button> {tag} </Button>
-      ))}
+                <Image src={story.mainImage} h="200px" w="100%" />
+                <Flex p="15px 10px 0px" justifyContent="space-between" alignItems="center">
+                  <Grid gap="20px" templateColumns="50px 1fr" placeItems="start" pr="10px">
+                    <SquareAvatar src={story.profile.avatar} />
+                    <Box>
+                      <h3>{story.profile.handle}</h3>
+
+                      <h3>{story.profile.displayName}</h3>
+                    </Box>
+                  </Grid>
+                  <Box textAlign="right" fontSize="1.4rem">
+                    {story.profile.estimatedTime}
+                    {moment(story.profile.publishedAt).format('MMMM Do YYYY')}
+                  </Box>
+                </Flex>
+              </>
+            )}
+          </VStack>
+        ))}
+      </SimpleGrid>
     </GridItem>
-    <GridItem colStart={2} colEnd={-2} bg="rebeccapurple" border="green 2px solid">
-      <Button>Call to Action</Button>
-      <p> Create your free account to unlock your custom reading experience.</p>
+    <GridItem colStart={2} colEnd={-2} bg="green" mb="50px">
+      <SectionDivider> Tags </SectionDivider>
+      <Wrap justify="center">
+        {data.tags.map((tag) => (
+          <Button> {tag} </Button>
+        ))}
+      </Wrap>
+    </GridItem>
+    <GridItem
+      colStart={2}
+      colEnd={-2}
+      bg="rebeccapurple"
+      border="green 2px solid"
+      mt="25px"
+      textAlign="center"
+    >
+      <CallToAction href="https://app.hackernoon.com/signup" fontSize="3rem !important">
+        {' '}
+        Call to Action
+      </CallToAction>
+      <Text m="0" fontSize="1.6rem">
+        {' '}
+        Create your free account to unlock your custom reading experience.
+      </Text>
     </GridItem>
   </Layout>
 )

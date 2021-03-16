@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Header from './Header'
 import styled from '@emotion/styled'
-import { Grid, GridItem, Flex } from '@chakra-ui/react'
+import { Grid, GridItem, Flex, List, ListItem } from '@chakra-ui/react'
 type Props = {
   children?: ReactNode
   title?: string
@@ -50,14 +50,14 @@ const GreenLink = styled.a`
   </nav>
 </header>*/
 }
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
+const Layout = ({ children, title, handle }: Props) => (
   <div>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <Header />
+    <Header title={title} handle={handle} />
     <Grid
       templateColumns="repeat(5, 1fr)"
       gap={4}
@@ -71,36 +71,22 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
     </Grid>
     <GridItem colSpan={2} bg="papayawhip" />
     <Flex bg="rgb(246, 247, 249)">
-      <ul style={{ listStyleType: `none` }}>
-        <li>
+      <List spacing={3} style={{ listStyleType: `none` }} display="flex" flexWarp="wrap">
+        <ListItem mr="20px">
           <GreenLink>Help</GreenLink>
-        </li>
-        <li>
-          <a>About</a>
-        </li>
-        <li>
-          <a>Start Writing</a>
-        </li>
-        <li>
-          <a>Sponser:</a>
-        </li>
-        <li>
-          <a>Brand as Author</a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-        <li>
-          <a></a>
-        </li>
-      </ul>
-      <ul>
+        </ListItem>
+        <ListItem mr="20px">
+          <GreenLink>About</GreenLink>
+        </ListItem>
+        <ListItem mr="20px">
+          <GreenLink>Start Writing</GreenLink>
+        </ListItem>
+        <ListItem mr="20px">
+          <GreenLink>Sponser:</GreenLink>
+        </ListItem>
+        <ListItem mr="20px">
+          <GreenLink>Brand as Author</GreenLink>
+        </ListItem>
         <li>
           <a></a>
         </li>
@@ -113,6 +99,8 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
         <li>
           <a></a>
         </li>
+      </List>
+      <List>
         <li>
           <a></a>
         </li>
@@ -128,7 +116,19 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
         <li>
           <a></a>
         </li>
-      </ul>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+        <li>
+          <a></a>
+        </li>
+      </List>
     </Flex>
   </div>
 )
